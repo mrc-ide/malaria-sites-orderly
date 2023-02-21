@@ -1,0 +1,18 @@
+script: fetch.R
+
+artefacts:
+  - data:
+      description: Population and prevalence rasters
+      filenames:
+        - population.tif
+        - prevalence.tif
+
+parameters:
+  country: ~
+  year: ~
+
+
+packages:
+  - cart
+  - malariaAtlas
+  - terra

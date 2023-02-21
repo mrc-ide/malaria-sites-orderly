@@ -1,0 +1,17 @@
+script: prepare.R
+
+artefacts:
+  - data:
+      description: Spatial file for country
+      filenames:
+        - spatial.RDS
+
+parameters:
+  country: ~
+
+resources:
+  - data
+
+packages:
+  - geojsonsf
+  - readr

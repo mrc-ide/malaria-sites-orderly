@@ -1,0 +1,20 @@
+script: script.R
+
+parameters:
+  country: ~
+  year: ~
+
+artefacts:
+  - data:
+      description: Site file
+      filenames:
+        - site_file.RDS
+
+sources:
+  - R/diagnostics.R
+
+depends:
+  - calibrate:
+      id: latest(parameter:country == country && parameter:year == year)
+      use:
+        stage_4.RDS: stage_4.RDS

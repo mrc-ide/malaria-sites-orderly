@@ -1,0 +1,10 @@
+script: prepare.R
+
+artefacts:
+  - data:
+      description: Disease burden csv data
+      filenames:
+        - burden.csv
+
+resources:
+  - data/csv_data.csv
