@@ -1,13 +1,13 @@
 # Get spatial
-gadm <- readRDS("spatial.RDS")
+gadm <- readRDS("inputs/spatial.RDS")
   
 # Extract pop raster cell values bu admin
-pop_raster <- terra::rast("population.tif")
+pop_raster <- terra::rast("inputs/population.tif")
 pop_raw <- long_pixel(pop_raster, pop_raster, gadm, "pop", year)
 pop_raw[is.na(pop_raw$pop), "pop"] <- 0
   
 # Extract prevalence raster cell values bu admin
-pfpr_rast <- terra::rast("prevalence.tif")
+pfpr_rast <- terra::rast("inputs/prevalence.tif")
 pfpr_raw <- long_pixel(pfpr_rast, pop_raster, gadm, "pfpr", year)
   
 # Some processing for each sub-national unit

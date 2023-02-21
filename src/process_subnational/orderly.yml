@@ -17,12 +17,12 @@ depends:
   - fetch_inputs:
       id: latest(parameter:country == country && parameter:year == year)
       use:
-        prevalence.tif: prevalence.tif
-        population.tif: population.tif
+        inputs/prevalence.tif: prevalence.tif
+        inputs/population.tif: population.tif
   - prepare_country_inputs:
       id: latest(parameter:country == country)
       use:
-        spatial.RDS: spatial.RDS
+        inputs/spatial.RDS: spatial.RDS
 
 packages:
   - methods

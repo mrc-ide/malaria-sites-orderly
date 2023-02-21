@@ -5,5 +5,4 @@ terra::writeRaster(r2, "prevalence.tif")
 
 # Download a population raster (by country)
 r1 <- cart::get_pop(country, year)
-raster_name <- paste0("population.tif")
-terra::writeRaster(r1, raster_name)
+terra::writeRaster(r1, "population.tif")

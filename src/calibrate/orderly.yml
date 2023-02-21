@@ -17,4 +17,4 @@ depends:
   - process_country:
       id: latest(parameter:country == country && parameter:year == year)
       use:
-        stage_3.RDS: stage_3.RDS
+        inputs/stage_3.RDS: stage_3.RDS

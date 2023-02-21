@@ -1,6 +1,6 @@
 # Load
-subnational_data <- readRDS("stage_2.RDS")
-burden <- read.csv("burden.csv")
+subnational_data <- readRDS("inputs/stage_2.RDS")
+burden <- read.csv("inputs/burden.csv")
 
 # Rescale
 scaler <- get_scaler(subnational_data, burden$pfpr)

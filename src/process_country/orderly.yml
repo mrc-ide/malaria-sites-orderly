@@ -17,8 +17,8 @@ depends:
   - process_subnational:
       id: latest(parameter:country == country && parameter:year == year)
       use:
-        stage_2.RDS: stage_2.RDS
+        inputs/stage_2.RDS: stage_2.RDS
   - prepare_global_inputs:
       id: latest
       use:
-        burden.csv: burden.csv
+        inputs/burden.csv: burden.csv
