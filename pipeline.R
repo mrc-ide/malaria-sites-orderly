@@ -1,3 +1,5 @@
+#!/usr/bin/env Rscript
+
 countries <- c("NGA")
 years <- 2018:2018
 
