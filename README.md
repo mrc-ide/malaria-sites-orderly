@@ -1,10 +1,14 @@
-# orderly
-
+# Malaria Sites Orderly
+ 
 This is an [`orderly`](https://github.com/vimc/orderly) project.  The directories are:
 
 * `src`: create new reports here
 * `archive`: versioned results of running your report
 * `data`: copies of data used in the reports
+
+R packages that should be installed from GitHub:
+* [orderly](https://github.com/vimc/orderly)
+* [cart](https://github.com/mrc-ide/cart)
 
 To run the pipeline:
 `./pipeline.R`
