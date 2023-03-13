@@ -52,3 +52,16 @@ database: ~
 #
 # The fields must not clash with built-in field names.
 fields: ~
+
+remote:
+  main:
+    driver: orderlyweb::orderlyweb_remote
+    args:
+      host: malaria-orderly.dide.ic.ac.uk
+      port: 443
+      token: $VAULT_AUTH_GITHUB_TOKEN
+    primary: true
+    master_only: true
+
+vault:
+  addr: https://vault.dide.ic.ac.uk:8200
