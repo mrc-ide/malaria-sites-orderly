@@ -8,4 +8,4 @@ parameters <- make_parameters(input_subnational)
 calibration <- calibrate(parameters)
 
 # Save intermediary output
-saveRDS(calibrated, "calibrated.RDS")
+saveRDS(calibration, "calibrated.RDS")

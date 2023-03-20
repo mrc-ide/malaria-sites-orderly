@@ -19,7 +19,7 @@ sources:
   - R/diagnostics.R
 
 depends:
-  - calibrate:
+  - process_country:
       id: latest(parameter:country == country && parameter:year == year)
       use:
-        inputs/stage_4.RDS: stage_4.RDS
+        inputs/stage_3.RDS: stage_3.RDS
