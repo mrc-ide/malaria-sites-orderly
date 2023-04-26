@@ -1,4 +1,4 @@
-script: process.R
+script: orderly.R
 
 parameters:
   country: ~
