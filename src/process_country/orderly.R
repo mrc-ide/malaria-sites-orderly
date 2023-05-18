@@ -1,3 +1,5 @@
+orderly3::orderly_parameters(country = NULL, year = NULL)
+
 # Load
 orderly3::orderly_dependency("process_subnational",
                              "latest(parameter:country == country && parameter:year == year)",

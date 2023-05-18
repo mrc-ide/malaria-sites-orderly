@@ -1,17 +1,6 @@
 script: orderly.R
 
-parameters:
-  country: ~
-  year: ~
 
-artefacts:
-  - data:
-      description: Disease burden csv data
-      filenames:
-        - stage_2.RDS
-
-sources:
-  - R/spatial.R
 
 depends:
   - fetch_inputs:

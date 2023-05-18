@@ -1,3 +1,5 @@
+orderly3::orderly_parameters(country = NULL, year = NULL)
+
 orderly3::orderly_dependency("process_country",
                              "latest(parameter:country == country && parameter:year == year)",
                              c(stage_3.RDS = "stage_3.RDS"))
