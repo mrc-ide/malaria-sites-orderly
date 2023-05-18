@@ -1,11 +1,16 @@
 orderly3::orderly_parameters(country = NULL, year = NULL)
 
+deparse(substitute(latest(parameter:country == CTRY && parameter:year == YEAR),
+                   list(CTRY = country, YEAR = year)))
+
 orderly3::orderly_dependency("fetch_inputs",
-                             "latest(parameter:country == country && parameter:year == year)",
+                             deparse(substitute(latest(parameter:country == CTRY && parameter:year == YEAR),
+                                                list(CTRY = country, YEAR = year))),
                              c(prevalence.tif = "prevalence.tif", population.tif = "population.tif"))
 
 orderly3::orderly_dependency("prepare_country_inputs",
-                             "latest(parameter:country == country)",
+                             deparse(substitute(latest(parameter:country == CTRY),
+                                                list(CTRY = country))),
                              c(spatial.RDS = "spatial.RDS"))
 # Get spatial
 gadm <- readRDS("spatial.RDS")
