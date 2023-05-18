@@ -7,8 +7,8 @@ ctry_year <- read.csv("params.csv", strip.white = TRUE)
 # run first part of pipeline, here locally but ultimately this would be run remotely
 for (i in 1:nrow(ctry_year)) {
   row <- ctry_year[i,]
-  year <- row[[1]]
-  ctry <- row[[2]]
+  ctry <- row[[1]]
+  year <- row[[2]]
   orderly3::orderly_run("fetch_inputs",
                         parameters = list(country = ctry, year = year),
                         root = orderly_root)
@@ -49,7 +49,7 @@ bundle <- obj$enqueue_bulk(regions, function(country, region, year) orderly3::or
                                                                                           root = orderly_root))
 
 # extract dependencies
-deps <- apply(ctry_year, 1, function(row) bundle$ids[bundle$X$country == row[2] && bundle$X$year == row[1]])
+deps <- apply(ctry_year, 1, function(row) bundle$ids[bundle$X$country == row[[1]] && bundle$X$year == row[[2]]])
 
 # queue aggregation steps with dependencies
 aggregation_bundle <- obj$enqueue_bulk(ctry_year, function(country, year) orderly3::orderly_run("final_outputs",
