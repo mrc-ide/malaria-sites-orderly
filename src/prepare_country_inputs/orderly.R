@@ -1,3 +1,5 @@
+orderly3::orderly_parameters(country = NULL)
+
 # Get a spatial file
 gad_file <- paste0("data/gadm41_", country, "_1.json")
 orderly3::orderly_resource(gad_file)
