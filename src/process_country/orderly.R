@@ -1,10 +1,13 @@
+source("R/rescale.R")
 orderly3::orderly_parameters(country = NULL, year = NULL)
 
 # Load
 orderly3::orderly_dependency("process_subnational",
-                             deparse(substitute(latest(parameter:country == CTRY && parameter:year == YEAR),
-                                                list(CTRY = country, YEAR = year))),
-                             c(stage_2.RDS = "stage_2.RDS", burden.csv = "burden.csv"))
+                             "latest(parameter:country == this:country && parameter:year == this:year)",
+                             c(stage_2.RDS = "stage_2.RDS"))
+orderly3::orderly_dependency("prepare_global_inputs",
+                             "latest()",
+                             c(burden.csv = "burden.csv"))
 subnational_data <- readRDS("stage_2.RDS")
 burden <- read.csv("burden.csv")
 

@@ -1,8 +1,8 @@
+source("R/calibrate.R")
 orderly3::orderly_parameters(country = NULL, year = NULL)
 orderly3::orderly_artefact("Intermediary outputs", "stage_4.RDS")
 orderly3::orderly_dependency("process_country",
-                             deparse(substitute(latest(parameter:country == CTRY && parameter:year == YEAR),
-                                                list(CTRY = country, YEAR = year))),
+                             "latest(parameter:country == this:country && parameter:year == this:year)",
                              c(stage_3.RDS = "stage_3.RDS"))
 
 # Load input

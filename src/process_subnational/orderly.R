@@ -1,16 +1,11 @@
+source("R/spatial.R")
 orderly3::orderly_parameters(country = NULL, year = NULL)
-
-deparse(substitute(latest(parameter:country == CTRY && parameter:year == YEAR),
-                   list(CTRY = country, YEAR = year)))
-
 orderly3::orderly_dependency("fetch_inputs",
-                             deparse(substitute(latest(parameter:country == CTRY && parameter:year == YEAR),
-                                                list(CTRY = country, YEAR = year))),
+                             "latest(parameter:country == this:country && parameter:year == this:year)",
                              c(prevalence.tif = "prevalence.tif", population.tif = "population.tif"))
 
 orderly3::orderly_dependency("prepare_country_inputs",
-                             deparse(substitute(latest(parameter:country == CTRY),
-                                                list(CTRY = country))),
+                             "latest(parameter:country == this:country)",
                              c(spatial.RDS = "spatial.RDS"))
 # Get spatial
 gadm <- readRDS("spatial.RDS")

@@ -1,10 +1,14 @@
 #!/usr/bin/env Rscript
 
-root <- "~/net/home/contexts"
 orderly_root <- "~/net/home/malaria-sites-orderly"
 ctry_year <- read.csv("params.csv", strip.white = TRUE)
 
+orderly_root <- "."
 # run first part of pipeline, here locally but ultimately this would be run remotely
+
+orderly3::orderly_run("prepare_global_inputs",
+                      root = orderly_root)
+
 for (i in 1:nrow(ctry_year)) {
   row <- ctry_year[i,]
   ctry <- row[[1]]
@@ -27,10 +31,11 @@ for (i in 1:nrow(ctry_year)) {
 # on the network share drive
 
 # setup cluster tools
-ctx <- context::context_save(root)
+context_root <- "~/net/home/contexts"
+ctx <- context::context_save(context_root)
 
 config <- didehpc::didehpc_config(
-  workdir = root,
+  workdir = context_root,
   cluster = "mrc"
 )
 obj <- didehpc::queue_didehpc(ctx, config)
@@ -47,7 +52,6 @@ bundle <- obj$enqueue_bulk(regions, function(country, region, year) orderly3::or
                                                                                                             region = region,
                                                                                                             year = year),
                                                                                           root = orderly_root))
-
 # extract dependencies
 deps <- apply(ctry_year, 1, function(row) bundle$ids[bundle$X$country == row[[1]] && bundle$X$year == row[[2]]])
 
