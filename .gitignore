@@ -1,7 +1,8 @@
 .idea
+.Rproj.user
 
 .outpack
 archive
 draft
 
-.Rproj.user
+context
