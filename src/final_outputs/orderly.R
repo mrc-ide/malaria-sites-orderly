@@ -16,7 +16,7 @@ for (region in sites$ID) {
     c("regions/${region}/calibration.rds" = "calibrated.rds"))
 }
 
-paths <- file.path("regions", ids, "calibrated.rds")
+paths <- file.path("regions", sites$ID, "calibration.rds")
 calibration <- do.call("rbind", lapply(paths, readRDS))
 sites$calibration <- calibration
 

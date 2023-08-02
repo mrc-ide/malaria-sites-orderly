@@ -45,7 +45,6 @@ bundle <- obj$enqueue_bulk(regions, function(country, region, year) {
 })
 
 # extract dependencies
-
 deps <- lapply(seq_len(nrow(ctry_year)), function(i) {
   bundle$ids[bundle$X$country == ctry_year$country[[i]] & bundle$X$year == ctry_year$year[[i]]]
 })
@@ -53,8 +52,7 @@ deps <- lapply(seq_len(nrow(ctry_year)), function(i) {
 # queue aggregation steps with dependencies
 aggregation_bundle <- obj$enqueue_bulk(ctry_year, function(country, year) {
   orderly2::orderly_run("final_outputs",
-                        parameters = list(country = country,
-                                          year = year))
+                        parameters = list(country = country, year = year))
 }, depends_on = deps)
 
 # final step would be to push the results to the orderly remote
