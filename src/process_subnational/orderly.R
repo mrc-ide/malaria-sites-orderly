@@ -1,14 +1,15 @@
-source("R/spatial.R")
-orderly3::orderly_parameters(country = NULL, year = NULL)
-orderly3::orderly_dependency("fetch_inputs",
+orderly2::orderly_parameters(country = NULL, year = NULL)
+orderly2::orderly_dependency("fetch_inputs",
                              "latest(parameter:country == this:country && parameter:year == this:year)",
                              c(prevalence.tif = "prevalence.tif", population.tif = "population.tif"))
-
-orderly3::orderly_dependency("prepare_country_inputs",
+orderly2::orderly_dependency("prepare_country_inputs",
                              "latest(parameter:country == this:country)",
-                             c(spatial.RDS = "spatial.RDS"))
+                             c(spatial.rds = "spatial.rds"))
+
+source("R/spatial.R")
+
 # Get spatial
-gadm <- readRDS("spatial.RDS")
+gadm <- readRDS("spatial.rds")
 
 # Extract pop raster cell values bu admin
 pop_raster <- terra::rast("population.tif")
@@ -28,5 +29,5 @@ site_info <- pop_raw |>
                    .groups = "drop")
 
 # Save intermediary output
-saveRDS(site_info, "stage_2.RDS")
-orderly3::orderly_artefact("Intermediary outputs", "stage_2.RDS")
+saveRDS(site_info, "stage_2.rds")
+orderly2::orderly_artefact("Intermediary outputs", "stage_2.rds")

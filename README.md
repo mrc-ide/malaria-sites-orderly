@@ -8,7 +8,7 @@ R packages that should be installed from GitHub:
 
 Report sources are contained in the `src` directory. To start running reports locally, you will first need to initialise the repo with `orderly2::orderly_init(".")`.
 
-Individual reports can then be run, e.g. `orderly2::orderly_run("prepare_global_inputs", root = ".")`
+Individual reports can then be run, e.g. `orderly2::orderly_run("prepare_global_inputs")`
 
 An example pipeline script can be found in `pipeline.R`.
 
