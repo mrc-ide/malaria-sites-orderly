@@ -3,8 +3,13 @@
 This is an [`orderly2`](https://github.com/mrc-ide/orderly2) project.
 
 R packages that should be installed from GitHub:
+
 * [orderly2](https://github.com/mrc-ide/orderly2)
 * [cart](https://github.com/mrc-ide/cart)
+
+In addition, from CRAN
+
+* malariaAtlas
 
 Report sources are contained in the `src` directory. To start running reports locally, you will first need to initialise the repo with `orderly2::orderly_init(".")`.
 

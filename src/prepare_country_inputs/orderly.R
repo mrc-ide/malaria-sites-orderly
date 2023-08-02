@@ -9,4 +9,4 @@ spatial_raw <- readr::read_file(gad_file)
 spatial <- geojsonsf::geojson_sf(spatial_raw)
 
 orderly2::orderly_artefact("Spatial file for country", "spatial.rds")
-readRDS(spatial, "spatial.rds")
+saveRDS(spatial, "spatial.rds")
