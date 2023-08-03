@@ -1,8 +1,8 @@
 .idea
+.Rproj.user
+
+.outpack
 archive
 draft
-orderly.sqlite
-bundles
-output
-.outpack
 
+context
